@@ -1,6 +1,7 @@
 .idea/
 PrivateNotes.MVC/bin/
 PrivateNotes.MVC/obj/
+PrivateNotes.MVC/app.db
 PrivateNotes.Models/bin/
 PrivateNotes.Models/obj/
 PrivateNotes.Data/bin/

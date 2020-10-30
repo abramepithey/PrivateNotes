@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 
 namespace PrivateNotes.Data
 {
@@ -14,5 +17,16 @@ namespace PrivateNotes.Data
         }
 
         public DbSet<Note> Notes { get; set; }
+    }
+    
+    public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext> 
+    { 
+        public ApplicationDbContext CreateDbContext(string[] args) 
+        { 
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            optionsBuilder.UseSqlite("Data Source=app.db");
+
+            return new ApplicationDbContext(optionsBuilder.Options);
+        } 
     }
 }
