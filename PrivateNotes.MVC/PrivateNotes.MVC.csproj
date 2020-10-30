@@ -17,4 +17,12 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.8" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\PrivateNotes.Data\PrivateNotes.Data.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Data" />
+    </ItemGroup>
+
 </Project>
