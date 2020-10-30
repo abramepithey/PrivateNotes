@@ -1,0 +1,11 @@
+.idea/
+PrivateNotes.MVC/bin/
+PrivateNotes.MVC/obj/
+PrivateNotes.Models/bin/
+PrivateNotes.Models/obj/
+PrivateNotes.Data/bin/
+PrivateNotes.Data/obj/
+PrivateNotes.Services/bin/
+PrivateNotes.Services/obj/
+PrivateNotes.Contracts/bin/
+PrivateNotes.Contracts/obj/
