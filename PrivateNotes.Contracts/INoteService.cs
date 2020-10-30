@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using PrivateNotes.Data;
 using PrivateNotes.Models;
 
 namespace PrivateNotes.Contracts
@@ -10,5 +11,6 @@ namespace PrivateNotes.Contracts
         bool CreateNote(NoteCreateModel model);
         bool UpdateNote(NoteUpdateModel model);
         bool DeleteNote(int id);
+        Note GetNoteHelper();
     }
 }

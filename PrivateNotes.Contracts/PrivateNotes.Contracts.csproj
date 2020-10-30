@@ -5,6 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\PrivateNotes.Data\PrivateNotes.Data.csproj" />
       <ProjectReference Include="..\PrivateNotes.Models\PrivateNotes.Models.csproj" />
     </ItemGroup>
 

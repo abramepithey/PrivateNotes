@@ -1,11 +1,19 @@
 using System.Collections.Generic;
 using PrivateNotes.Contracts;
+using PrivateNotes.Data;
 using PrivateNotes.Models;
 
 namespace PrivateNotes.Services
 {
     public class NoteService : INoteService
     {
+        private ApplicationDbContext _context;
+
+        public NoteService(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+        
         public IEnumerable<NoteListModel> GetAllNotes()
         {
             throw new System.NotImplementedException();
@@ -27,6 +35,11 @@ namespace PrivateNotes.Services
         }
 
         public bool DeleteNote(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Note GetNoteHelper()
         {
             throw new System.NotImplementedException();
         }
