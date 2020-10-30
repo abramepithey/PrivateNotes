@@ -1,4 +1,7 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using PrivateNotes.Contracts;
 using PrivateNotes.Data;
 using PrivateNotes.Models;
@@ -7,41 +10,76 @@ namespace PrivateNotes.Services
 {
     public class NoteService : INoteService
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
+        private readonly Guid _userId;
 
-        public NoteService(ApplicationDbContext context)
+        public NoteService(ApplicationDbContext context, Guid userId)
         {
             _context = context;
+            _userId = userId;
         }
         
         public IEnumerable<NoteListModel> GetAllNotes()
         {
-            throw new System.NotImplementedException();
+            var query = _context
+                .Notes
+                .Where(q => q.UserId == _userId)
+                .Select(n => new NoteListModel
+                {
+                    NoteId = n.NoteId,
+                    Title = n.Title
+                }).ToArray();
+
+            return query;
         }
 
         public NoteDetailModel GetNoteById(int id)
         {
-            throw new System.NotImplementedException();
+            var entity = GetNoteHelper(id);
+            
+            return new NoteDetailModel
+            {
+                NoteId = entity.NoteId,
+                Title = entity.Title,
+                Content = entity.Content
+            };
         }
 
         public bool CreateNote(NoteCreateModel model)
         {
-            throw new System.NotImplementedException();
+            Note note = new Note {Title = model.Title, Content = model.Content, UserId = _userId};
+
+            _context.Notes.Add(note);
+
+            return _context.SaveChanges() == 1;
         }
 
         public bool UpdateNote(NoteUpdateModel model)
         {
-            throw new System.NotImplementedException();
+            var entity = GetNoteHelper(model.NoteId);
+
+            entity.Title = model.Title;
+            entity.Content = model.Content;
+
+            return _context.SaveChanges() == 1;
         }
 
         public bool DeleteNote(int id)
         {
-            throw new System.NotImplementedException();
+            var entity = GetNoteHelper(id);
+
+            _context.Notes.Remove(entity);
+
+            return _context.SaveChanges() == 1;
         }
 
-        public Note GetNoteHelper()
+        public Note GetNoteHelper(int id)
         {
-            throw new System.NotImplementedException();
+            var entity = _context
+                .Notes
+                .Single(e => e.NoteId == id && e.UserId == _userId);
+
+            return entity;
         }
     }
 }
