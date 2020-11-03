@@ -1,0 +1,40 @@
+@model IEnumerable<PrivateNotes.Models.NoteListModel>
+
+@{
+    ViewBag.Title = "Notes";
+    Layout = "_Layout";
+}
+
+<h2>Notes</h2>
+
+<div class="row mx-0">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NoteId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NoteId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @* @Html.ActionLink("Details", "Details", new { id = item.PlanId }, new { @class = "btn btn-sm btn-secondary" }) *@
+                    @* @Html.ActionLink("Edit", "Edit", new { id = item.PlanId }, new { @class = "btn btn-sm btn-secondary" }) *@
+                    @* @Html.ActionLink("Delete", "Delete", new { id = item.PlanId }, new { @class = "btn btn-sm btn-secondary" }) *@
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
