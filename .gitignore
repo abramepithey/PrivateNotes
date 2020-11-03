@@ -1,4 +1,5 @@
 .idea/
+.DS_Store
 PrivateNotes.MVC/bin/
 PrivateNotes.MVC/obj/
 PrivateNotes.MVC/app.db
