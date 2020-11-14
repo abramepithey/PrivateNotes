@@ -67,7 +67,14 @@ namespace PrivateNotes.MVC.Controllers
         {
             var service = CreateNoteService();
             var entity = service.GetNoteById(id);
-            return View(entity);
+            var model = 
+                new NoteUpdateModel
+                {
+                    NoteId = entity.NoteId,
+                    Title = entity.Title,
+                    Content = entity.Content
+                };
+            return View(model);
         }
         
         // POST
