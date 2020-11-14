@@ -46,9 +46,15 @@ namespace PrivateNotes.MVC.Controllers
         {
             if (!ModelState.IsValid)
                 return View(model);
+            
             var service = CreateNoteService();
-            service.CreateNote(model);
-            return RedirectToAction("Index");
+
+            if (service.CreateNote(model))
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
         }
         
         // GET
@@ -87,9 +93,15 @@ namespace PrivateNotes.MVC.Controllers
         {
             if (!ModelState.IsValid)
                 return View(model);
+            
             var service = CreateNoteService();
-            service.UpdateNote(model);
-            return RedirectToAction("Index", "Note");
+
+            if (service.UpdateNote(model))
+            {
+                return RedirectToAction("Index", "Note");
+            }
+
+            return View(model);
         }
         
         // GET
@@ -110,7 +122,9 @@ namespace PrivateNotes.MVC.Controllers
         public IActionResult DeleteNote(int id)
         {
             var service = CreateNoteService();
+            
             service.DeleteNote(id);
+            
             return RedirectToAction("Index", "Note");
         }
 
