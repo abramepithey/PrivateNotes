@@ -71,6 +71,12 @@ namespace PrivateNotes.MVC.Controllers
             }
             catch (InvalidOperationException)
             {
+                TempData["NoResult"] = "The Note could not be found";
+                return RedirectToAction("Index");
+            }
+            catch (UnauthorizedAccessException)
+            {
+                TempData["NoResult"] = "You can only see your notes";
                 return RedirectToAction("Index");
             }
         }
@@ -95,6 +101,12 @@ namespace PrivateNotes.MVC.Controllers
             }
             catch (InvalidOperationException)
             {
+                TempData["NoResult"] = "The Note could not be found";
+                return RedirectToAction("Index");
+            }
+            catch (UnauthorizedAccessException)
+            {
+                TempData["NoResult"] = "You can only alter your notes";
                 return RedirectToAction("Index");
             }
         }
@@ -133,10 +145,12 @@ namespace PrivateNotes.MVC.Controllers
             }
             catch (InvalidOperationException)
             {
+                TempData["NoResult"] = "The Note could not be found";
                 return RedirectToAction("Index");
             }
             catch (UnauthorizedAccessException)
             {
+                TempData["NoResult"] = "You can only delete your notes";
                 return RedirectToAction("Index");
             }
         }
