@@ -5,6 +5,24 @@
     Layout = "_Layout";
 }
 
+@if (TempData.ContainsKey("SaveResult"))
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        @TempData["SaveResult"]
+    </div>
+} else if (TempData.ContainsKey("NoResult"))
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        @TempData["NoResult"]
+    </div>
+}
+
 <h2>Notes</h2>
 @Html.ActionLink("Create a Note", "Create", "Note", null, new { @class = "btn btn-secondary mb-2" })
 
