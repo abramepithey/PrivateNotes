@@ -9,6 +9,8 @@
 
 @using (Html.BeginForm())
 {
+    @Html.AntiForgeryToken()
+    
     <div class="form-horizontal">
         <p>Create your new Note!</p>
         <hr/>
