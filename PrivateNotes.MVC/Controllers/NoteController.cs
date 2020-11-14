@@ -63,8 +63,15 @@ namespace PrivateNotes.MVC.Controllers
         public IActionResult Detail(int id)
         {
             var service = CreateNoteService();
-            var entity = service.GetNoteById(id);
-            return View(entity);
+            try
+            {
+                var entity = service.GetNoteById(id);
+                return View(entity);
+            }
+            catch (InvalidOperationException)
+            {
+                return RedirectToAction("Index");
+            }
         }
         
         // GET
@@ -73,15 +80,22 @@ namespace PrivateNotes.MVC.Controllers
         public IActionResult Update(int id)
         {
             var service = CreateNoteService();
-            var entity = service.GetNoteById(id);
-            var model = 
-                new NoteUpdateModel
-                {
-                    NoteId = entity.NoteId,
-                    Title = entity.Title,
-                    Content = entity.Content
-                };
-            return View(model);
+            try
+            {
+                var entity = service.GetNoteById(id);
+                var model = 
+                    new NoteUpdateModel
+                    {
+                        NoteId = entity.NoteId,
+                        Title = entity.Title,
+                        Content = entity.Content
+                    };
+                return View(model);
+            }
+            catch (InvalidOperationException)
+            {
+                return RedirectToAction("Index");
+            }
         }
         
         // POST
@@ -110,8 +124,19 @@ namespace PrivateNotes.MVC.Controllers
         public IActionResult Delete(int id)
         {
             var service = CreateNoteService();
-            var entity = service.GetNoteById(id);
-            return View(entity);
+            try
+            {
+                var entity = service.GetNoteById(id);
+                return View(entity);
+            }
+            catch (InvalidOperationException)
+            {
+                return RedirectToAction("Index");
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return RedirectToAction("Index");
+            }
         }
         
         // POST
