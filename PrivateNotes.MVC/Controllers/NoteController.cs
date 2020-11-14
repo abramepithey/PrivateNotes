@@ -20,6 +20,7 @@ namespace PrivateNotes.MVC.Controllers
         
         // GET
         [Authorize]
+        [HttpGet]
         public IActionResult Index()
         {
             var service = CreateNoteService();
