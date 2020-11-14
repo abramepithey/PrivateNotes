@@ -1,0 +1,24 @@
+@model PrivateNotes.Models.NoteDetailModel
+
+@{
+    ViewBag.Title = "Delete Note";
+    Layout = "_Layout";
+}
+
+<h2>Delete Note</h2>
+
+@Html.LabelFor(model => model.Title)
+@Html.DisplayFor(model => model.Title);
+
+@Html.LabelFor(model => model.Content);
+@Html.DisplayFor(model => model.Content);
+
+@using (Html.BeginForm())
+{
+    <div class="form-actions no-color col">
+        <input type="submit" value="Delete" class="btn btn-primary" />
+    </div>
+    <div class="col my-auto text-right">
+        @Html.ActionLink("Back", "Index", "Note", new { @class = "btn btn-sm btn-secondary" })
+    </div>
+}
