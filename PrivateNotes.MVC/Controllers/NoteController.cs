@@ -49,6 +49,16 @@ namespace PrivateNotes.MVC.Controllers
             service.CreateNote(model);
             return RedirectToAction("Index");
         }
+        
+        // GET
+        [Authorize]
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            var service = CreateNoteService();
+            var entity = service.GetNoteById(id);
+            return View(entity);
+        }
 
         private NoteService CreateNoteService()
         {
