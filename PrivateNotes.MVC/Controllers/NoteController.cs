@@ -41,6 +41,7 @@ namespace PrivateNotes.MVC.Controllers
         [Authorize]
         [HttpPost]
         [ActionName("Create")]
+        [ValidateAntiForgeryToken]
         public IActionResult CreateNote(NoteCreateModel model)
         {
             if (!ModelState.IsValid)
@@ -81,6 +82,7 @@ namespace PrivateNotes.MVC.Controllers
         [Authorize]
         [HttpPost]
         [ActionName("Update")]
+        [ValidateAntiForgeryToken]
         public IActionResult UpdateNote(NoteUpdateModel model)
         {
             if (!ModelState.IsValid)
@@ -104,6 +106,7 @@ namespace PrivateNotes.MVC.Controllers
         [Authorize]
         [HttpPost]
         [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public IActionResult DeleteNote(int id)
         {
             var service = CreateNoteService();
