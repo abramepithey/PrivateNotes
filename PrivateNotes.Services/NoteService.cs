@@ -73,7 +73,7 @@ namespace PrivateNotes.Services
             return _context.SaveChanges() == 1;
         }
 
-        public Note GetNoteHelper(int id)
+        private Note GetNoteHelper(int id)
         {
             var entity = _context
                 .Notes
