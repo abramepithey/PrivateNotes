@@ -7,6 +7,7 @@ PrivateNotes.Models/bin/
 PrivateNotes.Models/obj/
 PrivateNotes.Data/bin/
 PrivateNotes.Data/obj/
+PrivateNotes.Data/app.db
 PrivateNotes.Services/bin/
 PrivateNotes.Services/obj/
 PrivateNotes.Contracts/bin/
