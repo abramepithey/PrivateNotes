@@ -51,6 +51,7 @@ namespace PrivateNotes.MVC.Controllers
 
             if (service.CreateNote(model))
             {
+                TempData["SaveResult"] = "Your Note was added";
                 return RedirectToAction("Index");
             }
 
@@ -112,6 +113,7 @@ namespace PrivateNotes.MVC.Controllers
 
             if (service.UpdateNote(model))
             {
+                TempData["SaveResult"] = "Your Note was updated";
                 return RedirectToAction("Index", "Note");
             }
 
@@ -149,6 +151,8 @@ namespace PrivateNotes.MVC.Controllers
             var service = CreateNoteService();
             
             service.DeleteNote(id);
+
+            TempData["SaveResult"] = "Your Note was deleted";
             
             return RedirectToAction("Index", "Note");
         }
