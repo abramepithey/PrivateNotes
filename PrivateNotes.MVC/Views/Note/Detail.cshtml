@@ -7,11 +7,11 @@
 
 <h2>Note Details</h2>
 
-@Html.LabelFor(model => model.Title)
-@Html.DisplayFor(model => model.Title);
+@Html.LabelFor(model => model.Title, "", new { @class = "col-2 "}):
+@Html.DisplayFor(model => model.Title, "", new { @class = "col-10 "})
 
-@Html.LabelFor(model => model.Content);
-@Html.DisplayFor(model => model.Content);
+@Html.LabelFor(model => model.Content, "", new { @class = "col-2 "}):
+@Html.DisplayFor(model => model.Content, "", new { @class = "col-10 "})
 
 @Html.ActionLink("Edit", "Update", new { id = Model.NoteId }, new { @class = "btn btn-sm btn-secondary" })
 @Html.ActionLink("Delete", "Delete", new { id = Model.NoteId }, new { @class = "btn btn-sm btn-secondary" })
