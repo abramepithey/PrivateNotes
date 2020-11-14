@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PrivateNotes.Data;
+using PrivateNotes.Models;
 using PrivateNotes.Services;
 
 namespace PrivateNotes.MVC.Controllers
@@ -26,6 +27,27 @@ namespace PrivateNotes.MVC.Controllers
             var service = CreateNoteService();
             var query = service.GetAllNotes();
             return View(query);
+        }
+        
+        // GET
+        [Authorize]
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+        
+        // POST
+        [Authorize]
+        [HttpPost]
+        [ActionName("Create")]
+        public IActionResult CreateNote(NoteCreateModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+            var service = CreateNoteService();
+            service.CreateNote(model);
+            return RedirectToAction("Index");
         }
 
         private NoteService CreateNoteService()
