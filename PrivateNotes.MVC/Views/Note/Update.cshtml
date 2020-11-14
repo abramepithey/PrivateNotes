@@ -14,6 +14,7 @@
     <div class="form-horizontal">
         <p>Create your new Note!</p>
         <hr/>
+        @Html.HiddenFor(model => model.NoteId)
         <div class="form-group form-row">
             @Html.LabelFor(model => model.Title, new {@class = "control-label col-sm-2"})
             <div class="col-sm-10">
@@ -30,7 +31,7 @@
         </div>
         <div class="form-group form-row">
             <div class="offset-md-2 col">
-                <input type="submit" value="Create" class="btn btn-primary"/>
+                <input type="submit" value="Update" class="btn btn-primary"/>
             </div>
             <div class="col my-auto text-right">
                 @Html.ActionLink("Back to List", "Index", "Note", new {@class = "btn btn-sm btn-secondary"})
