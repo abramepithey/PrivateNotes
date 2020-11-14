@@ -82,6 +82,27 @@ namespace PrivateNotes.MVC.Controllers
             service.UpdateNote(model);
             return RedirectToAction("Index", "Note");
         }
+        
+        // GET
+        [Authorize]
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var service = CreateNoteService();
+            var entity = service.GetNoteById(id);
+            return View(entity);
+        }
+        
+        // POST
+        [Authorize]
+        [HttpPost]
+        [ActionName("Delete")]
+        public IActionResult DeleteNote(int id)
+        {
+            var service = CreateNoteService();
+            service.DeleteNote(id);
+            return RedirectToAction("Index", "Note");
+        }
 
         private NoteService CreateNoteService()
         {
