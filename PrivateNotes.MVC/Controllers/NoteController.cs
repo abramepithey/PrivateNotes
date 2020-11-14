@@ -53,7 +53,7 @@ namespace PrivateNotes.MVC.Controllers
         // GET
         [Authorize]
         [HttpGet]
-        public IActionResult Details(int id)
+        public IActionResult Detail(int id)
         {
             var service = CreateNoteService();
             var entity = service.GetNoteById(id);
